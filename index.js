@@ -8,7 +8,30 @@ require("dotenv").config();
 const { Builder, By, Capabilities } = require("selenium-webdriver");
 
 async function runTest() {
-  console.log("This is where the test will run");
+  // username and access key will be whatever is in the .env file
+  // locally or whatever is in the environment variables on
+  // browserstack
+  const username = process.env.BROWSERSTACK_USERNAME;
+  const accessKey = process.env.BROWSERSTACK_ACCESS_KEY;
+  const homepageUrl = "https://www.browserstack.com/";
+
+  const capabilitiesList = [
+    {
+      "bstack:options": {
+        os: "Windows",
+        osVersion: "10",
+        browserVersion: "latest",
+        projectName: "Browserstack test",
+        sessionName: "Login, assert, logout",
+        local: "false",
+        debug: "true",
+        seleniumVersion: "3.14.0",
+        userName: username,
+        accessKey: accessKey,
+      },
+      browserName: "Chrome",
+    },
+  ];
 }
 
 runTest();
