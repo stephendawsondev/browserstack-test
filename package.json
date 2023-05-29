@@ -1,10 +1,12 @@
 {
   "name": "browserstack-test",
   "version": "1.0.0",
-  "description": "",
+  "description": "A test for browserstack SE challenge",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    "test": "node index.js",
+    "postinstall": "npm update browserstack-node-sdk",
+    "test-browserstack": "node envUpdate.js"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +14,10 @@
   "dependencies": {
     "browserstack-local": "^1.5.2",
     "dotenv": "^16.0.3",
+    "js-yaml": "^4.1.0",
     "selenium-webdriver": "^4.9.2"
+  },
+  "devDependencies": {
+    "browserstack-node-sdk": "^1.15.1"
   }
 }
