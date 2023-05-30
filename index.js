@@ -54,6 +54,9 @@ async function runTest(capabilities) {
     } catch (error) {
       console.log(error);
       // stop the test
+      await driver.executeScript(
+        'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed","reason": "Some tests failed"}}'
+      );
       await driver.quit();
     }
 
@@ -68,6 +71,9 @@ async function runTest(capabilities) {
     } catch (error) {
       console.log(error);
       // stop the test
+      await driver.executeScript(
+        'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed","reason": "Some tests failed"}}'
+      );
       await driver.quit();
     }
   } else {
@@ -83,6 +89,9 @@ async function runTest(capabilities) {
     } catch (error) {
       console.log(error);
       // stop the test
+      await driver.executeScript(
+        'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed","reason": "Some tests failed"}}'
+      );
       await driver.quit();
     }
   }
@@ -103,6 +112,9 @@ async function runTest(capabilities) {
   } catch (error) {
     console.log(error);
     // stop the test
+    await driver.executeScript(
+      'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed","reason": "Some tests failed"}}'
+    );
     await driver.quit();
   }
 
@@ -130,6 +142,9 @@ async function runTest(capabilities) {
   } catch (error) {
     console.log(error);
     // stop the test
+    await driver.executeScript(
+      'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed","reason": "Some tests failed"}}'
+    );
     await driver.quit();
   }
 
@@ -147,6 +162,9 @@ async function runTest(capabilities) {
   } catch (error) {
     console.log(error);
     // stop the test
+    await driver.executeScript(
+      'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed","reason": "Some tests failed"}}'
+    );
     await driver.quit();
   }
 
@@ -161,6 +179,9 @@ async function runTest(capabilities) {
     } catch (error) {
       console.log(error);
       // stop the test
+      await driver.executeScript(
+        'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed","reason": "Some tests failed"}}'
+      );
       await driver.quit();
     }
   } else {
@@ -175,6 +196,9 @@ async function runTest(capabilities) {
     } catch (error) {
       console.log(error);
       // stop the test
+      await driver.executeScript(
+        'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed","reason": "Some tests failed"}}'
+      );
       await driver.quit();
     }
   }
@@ -191,6 +215,9 @@ async function runTest(capabilities) {
     } catch (error) {
       console.log(error);
       // stop the test
+      await driver.executeScript(
+        'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed","reason": "Some tests failed"}}'
+      );
       await driver.quit();
     }
   } else {
@@ -212,11 +239,17 @@ async function runTest(capabilities) {
     } catch (error) {
       console.log(error);
       // stop the test
+      await driver.executeScript(
+        'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed","reason": "Some tests failed"}}'
+      );
       await driver.quit();
     }
   }
 
   // quit the driver
+  await driver.executeScript(
+    'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"passed","reason": "Successfully carried out all tests"}}'
+  );
   await driver.quit();
 }
 
