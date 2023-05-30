@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Setup') {
             steps {
-                withCredentials([usernameColonPassword(credentialsId: 'login_credentials', variable: 'LOGIN_CREDENTIALS')]) {
+                withCredentials([usernamePassword(credentialsId: 'login_credentials', variable: 'LOGIN_CREDENTIALS')]) {
                     browserstack(credentialsId: 'b9e4565a-cdab-42f9-999f-3a0c97f6212f') {
                         sh "export LOGIN_CREDENTIALS=${LOGIN_CREDENTIALS} && npm install"
                     }
