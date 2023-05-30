@@ -1,35 +1,26 @@
 pipeline {
     agent any
 
-    environment {
-        BROWSERSTACK_USERNAME = credentials('browserstack-username')
-        BROWSERSTACK_ACCESS_KEY = credentials('browserstack-access-key')
-    }
-
     stages {
-        stage('Checkout') {
+        stage('Setup') {
             steps {
-                git 'https://github.com/stephendawsondev/browserstack-test.git'
+                browserstack(credentialsId: 'b9e4565a-cdab-42f9-999f-3a0c97f6212f') {
+                    sh 'npm install'
+                }
             }
         }
-
-        stage('Install dependencies') {
+        stage('Test') {
             steps {
-                sh 'npm install'
-            }
-        }
-
-        stage('Run tests') {
-            steps {
-                sh 'npm run test-browserstack'
+                browserstack(credentialsId: 'b9e4565a-cdab-42f9-999f-3a0c97f6212f') {
+                    sh 'npm run test-browserstack'
+                }
             }
         }
     }
 
     post {
         always {
-            archiveArtifacts artifacts: 'reports/**/*.xml', fingerprint: true
-            junit 'reports/**/*.xml'
+            deleteDir()
         }
     }
 }
