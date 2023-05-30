@@ -14,7 +14,7 @@ async function runTest(capabilities) {
   const username = process.env.BROWSERSTACK_USERNAME;
   const accessKey = process.env.BROWSERSTACK_ACCESS_KEY;
   const email = process.env.LOGIN_CREDENTIALS_USR;
-  const password = process.env.LOGIN_CREDENTIALS_PWS;
+  const password = process.env.LOGIN_CREDENTIALS_PSW;
   const homepageUrl = "https://www.browserstack.com/";
 
   // create the driver
